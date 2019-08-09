@@ -1,8 +1,12 @@
 package br.com.samaia.crudPF.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name = "cidade")
 public class Cidade {
@@ -11,6 +15,9 @@ public class Cidade {
 	@GeneratedValue
 	private long id;
 	private String cidade;
+	
+	@OneToMany(mappedBy = "cidade")
+	private List<Bairro> bairros = new ArrayList<Bairro>();
 
 	public long getId() {
 		return id;
@@ -26,6 +33,14 @@ public class Cidade {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+	
+	public List<Bairro> getBairros() {
+		return bairros;
+	}
+
+	public void setBairros(List<Bairro> bairros) {
+		this.bairros = bairros;
 	}
 
 	@Override

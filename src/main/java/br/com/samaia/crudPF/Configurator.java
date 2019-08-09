@@ -12,8 +12,8 @@ import org.springframework.context.annotation.ComponentScan;
  *
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"br.com.samaia"})
-@EntityScan(basePackages = {"br.com.samaia.bean"})
+@ComponentScan(basePackages = {"br.com.samaia.crudPF"})
+@EntityScan(basePackages = {"br.com.samaia.crudPF.bean"})
 public class Configurator extends SpringBootServletInitializer {
 	
 	@Override

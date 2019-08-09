@@ -6,6 +6,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity(name = "pessoa_fisica")
 public class PessoaFisica {
@@ -18,8 +21,14 @@ public class PessoaFisica {
 	private String cpf;
 	private String email;
 	private LocalDate dataNascimento;
+	
+	@CreationTimestamp
 	private LocalDate dataCadastro;
+	
+	@OneToMany(mappedBy = "pessoaFisica")
 	private List<Endereco> enderecos;
+	
+	@OneToMany(mappedBy = "pessoaFisica")
 	private List<Telefone> telefones;
 
 	public long getId() {

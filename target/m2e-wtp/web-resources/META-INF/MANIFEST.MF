@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
-Built-By: e016486
-Build-Jdk: 11.0.2
+Implementation-Title: crudPF
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: paulo
+Implementation-Vendor-Id: br.com.samaia
+Build-Jdk: 1.8.0_221
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/crudPF
 Created-By: Maven Integration for Eclipse
 

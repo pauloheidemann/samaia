@@ -3,6 +3,8 @@ package br.com.samaia.crudPF.bean;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "endereco")
 public class Endereco {
@@ -10,39 +12,72 @@ public class Endereco {
 	@Id
 	@GeneratedValue
 	private long id;
-
+	
 	private String logradouro;
 	private String cep;
+	
+	@ManyToOne
+	@JoinColumn(name = "bairro_id", nullable = false)
 	private Bairro bairro;
-	private Cidade cidade;
+	
 	private String uf;
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		return result;
+	@ManyToOne
+	@JoinColumn(name = "pessoa_fisica_id", nullable = false)
+	private PessoaFisica pessoaFisica;
+
+	public long getId() {
+		return id;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Endereco other = (Endereco) obj;
-		if (id != other.id)
-			return false;
-		return true;
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public Bairro getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(Bairro bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public PessoaFisica getPessoaFisica() {
+		return pessoaFisica;
+	}
+
+	public void setPessoaFisica(PessoaFisica pessoaFisica) {
+		this.pessoaFisica = pessoaFisica;
 	}
 
 	@Override
 	public String toString() {
-		return "Endereco [id=" + id + ", logradouro=" + logradouro + ", cep=" + cep + ", bairro=" + bairro + ", cidade="
-				+ cidade + ", uf=" + uf + "]";
+		return "Endereco [id=" + id + ", logradouro=" + logradouro + ", cep=" + cep + ", bairro=" + bairro + ", uf="
+				+ uf + ", pessoaFisica=" + pessoaFisica + "]";
 	}
 
 }

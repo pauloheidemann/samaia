@@ -1,8 +1,13 @@
 package br.com.samaia.crudPF.bean;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "bairro")
 public class Bairro {
@@ -11,6 +16,13 @@ public class Bairro {
 	@GeneratedValue
 	private long id;
 	private String nome;
+
+	@ManyToOne
+	@JoinColumn(name = "cidade_id", nullable = false)
+	private Cidade cidade;
+
+	@OneToMany(mappedBy = "bairro")
+	private List<Endereco> enderecos;
 
 	public long getId() {
 		return id;
@@ -26,6 +38,22 @@ public class Bairro {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	@Override
