@@ -17,10 +17,12 @@ public class PessoaFisicaService implements IPessoaFisicaService {
 	private IPessoaFisicaRepository repository;
 
 	public void salvar(PessoaFisica pessoa) throws Exception {
+		validarPessoa(pessoa);
 		repository.save(pessoa);
 	}
 
 	public void atualizar(PessoaFisica pessoa) throws Exception {
+		validarPessoa(pessoa);
 		repository.save(pessoa);
 	}
 
@@ -33,11 +35,19 @@ public class PessoaFisicaService implements IPessoaFisicaService {
 		if(pessoaFisica.isPresent())
 			return pessoaFisica.get();
 		else
-			throw new IllegalArgumentException("O ID para busca da pessoa é inválido");
+			throw new IllegalArgumentException("O ID para busca da pessoa ï¿½ invï¿½lido");
 	}
 
 	public List<PessoaFisica> consultarTodasPessoasFisicas() throws Exception {
 		return repository.findAll();
+	}
+	
+	private void validarPessoa(PessoaFisica pessoa) {
+		validarCPF(pessoa.getCpf());
+	}
+
+	private void validarCPF(String cpf) {
+		// TODO Auto-generated method stub
 	}
 	
 }
