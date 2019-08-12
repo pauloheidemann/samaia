@@ -59,7 +59,7 @@ public class PessoaFisicaEndPoint {
 	}
 	
 	@PutMapping(value= "/pessoa", consumes = "application/json", produces = "application/json")
-	Response atualizarPessoaFisica(PessoaFisica pessoaFisica) {
+	Response atualizarPessoaFisica(@RequestBody PessoaFisica pessoaFisica) {
 		try {
 			service.salvar(pessoaFisica);
 			return Response.status(Status.CREATED).entity(pessoaFisica.getId()).build();
