@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,7 +49,7 @@ public class PessoaFisicaEndPoint {
 	}
 	
 	@PostMapping(value= "/pessoa", consumes = "application/json")
-	Response inserirPessoaFisica(PessoaFisica pessoaFisica) {
+	Response inserirPessoaFisica(@RequestBody PessoaFisica pessoaFisica) {
 		try {
 			service.salvar(pessoaFisica);
 			return Response.status(Status.CREATED).entity(pessoaFisica.getId()).build();

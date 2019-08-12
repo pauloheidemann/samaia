@@ -10,7 +10,15 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import br.com.samaia.crudPF.serializer.LocalDateDeserializer;
+import br.com.samaia.crudPF.serializer.LocalDateSerializer;
+
 @Entity(name = "pessoa_fisica")
+@JsonIgnoreProperties({"dataCadastro"})
 public class PessoaFisica {
 
 	@Id
@@ -20,6 +28,9 @@ public class PessoaFisica {
 	private String nome;
 	private String cpf;
 	private String email;
+	
+	@JsonDeserialize(using = LocalDateDeserializer.class)  
+	@JsonSerialize(using = LocalDateSerializer.class) 
 	private LocalDate dataNascimento;
 	
 	@CreationTimestamp
